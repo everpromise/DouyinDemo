@@ -1,12 +1,16 @@
 package main
 
 import (
+	"github.com/RaymondCode/simple-demo/mapper"
 	"github.com/RaymondCode/simple-demo/service"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	go service.RunMessageServer()
+
+	mapper.InitDatabase() // 初始化数据库
+	//mapper.Test()
 
 	r := gin.Default()
 
