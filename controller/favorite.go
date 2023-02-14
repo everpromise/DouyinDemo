@@ -2,7 +2,7 @@ package controller
 
 import (
 	"net/http"
-	//"github.com/RaymondCode/simple-demo/entity"
+
 	"github.com/RaymondCode/simple-demo/services"
 	"github.com/gin-gonic/gin"
 )
@@ -30,10 +30,21 @@ func FavoriteAction(c *gin.Context) {
 
 // FavoriteList all users have same favorite video list
 func FavoriteList(c *gin.Context) {
-	c.JSON(http.StatusOK, VideoListResponse{
-		Response: Response{
-			StatusCode: 0,
-		},
-		VideoList: DemoVideos,
-	})
+	//user_id := c.Query("user_id")
+	token := c.Query("token")
+	var usi services.UserService
+	usi = services.UserServiceImpl{}
+	var vsi services.VideoService
+	vsi = services.VideoServiceImpl{}
+	//DemoVideos0 := vsi.FavorVideoList()
+	vsi.FavorVideoList()
+	userInfo := usi.UserInfo(token)
+	if userInfo != nil {
+		c.JSON(http.StatusOK, VideoListResponse{
+			Response: Response{
+				StatusCode: 0,
+			},
+			VideoList: DemoVideos,
+		})
+	}
 }
