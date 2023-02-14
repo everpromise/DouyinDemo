@@ -12,4 +12,7 @@ type UserService interface {
 	LoginUser(userLogin *entity.UserRegister) (int64, int64)
 
 	UserInfo(id string) *entity.UserInfo
+
+	//赞操作
+	VideoFavorAct(video_id string) int64
 }

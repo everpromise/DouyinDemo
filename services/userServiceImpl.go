@@ -34,3 +34,12 @@ func (u UserServiceImpl) UserInfo(id string) *entity.UserInfo {
 	userInfo := mapper.SelectUserInfoById(id)
 	return userInfo
 }
+
+func (u UserServiceImpl) VideoFavorAct(video_id string) int64 {
+	video, err := mapper.SelectVideoById(video_id)
+	if err != nil { //视频不存在
+		return 0
+	}
+	video.IsFavorite = !video.IsFavorite
+	return 1
+}
