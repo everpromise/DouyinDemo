@@ -35,10 +35,18 @@ func InsertVideo(video *entity.Video) error {
 	return nil
 }
 
-func VideoList(userId string) ([]entity.Video, error) {
+func VideoListById(userId string) ([]entity.Video, error) {
 	var videoList []entity.Video
 	if err := Db.Where("author_id = ?", userId).Find(&videoList).Error; err != nil {
 		return videoList, err
 	}
 	return videoList, nil
+}
+
+func VideoListAll() []entity.Video {
+	var videos []entity.Video
+	if err := Db.Find(&videos); err != nil {
+		return videos
+	}
+	return videos
 }

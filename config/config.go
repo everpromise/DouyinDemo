@@ -6,7 +6,7 @@ var port = "8080"
 var addrPre = "http://" + ip + ":" + port + "/"
 
 // video
-var LocalVideoPrefixPath = "./public/"
+var LocalVideoPrefixPath = "./public/videos/"
 var LocalCoverPrefixPath = "./public/covers/"
-var PlayUrlPrefix = addrPre + "public/"
+var PlayUrlPrefix = addrPre + "public/videos/"
 var CoverUrl = addrPre + "public/covers/"

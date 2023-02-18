@@ -16,6 +16,9 @@ type VideoService interface {
 	// 视频发布
 	VideoPublish(token string, title string, desc string, file *multipart.FileHeader) (*entity.UserInfo, *entity.Video, error)
 
-	// 视频列表
-	VideoList(userId string) []entity.VideoResponse
+	// 视频列表 相同用户
+	VideoListByid(userId string) []entity.VideoResponse
+
+	// 视频列表，全部用户
+	VideoList() []entity.VideoResponse
 }

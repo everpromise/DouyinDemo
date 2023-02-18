@@ -31,7 +31,7 @@ func (u VideoServiceImpl) VideoPublish(token string, title string, desc string, 
 	// 存储视频
 	filename := filepath.Base(file.Filename)
 	finalName := fmt.Sprintf("%d_%s", userInfo.Id, filename)
-	saveFile := filepath.Join("./public/", finalName)
+	saveFile := filepath.Join(config.LocalVideoPrefixPath, finalName)
 	utils.SaveUploadedFile(file, saveFile)
 
 	var video = entity.Video{
@@ -64,8 +64,8 @@ func (u VideoServiceImpl) VideoPublish(token string, title string, desc string, 
 	return userInfo, &video, nil
 }
 
-func (u VideoServiceImpl) VideoList(userId string) []entity.VideoResponse {
-	videoList, err := mapper.VideoList(userId)
+func (u VideoServiceImpl) VideoListByid(userId string) []entity.VideoResponse {
+	videoList, err := mapper.VideoListById(userId)
 	n := len(videoList)
 	if n == 0 {
 		return nil
@@ -89,4 +89,22 @@ func (u VideoServiceImpl) VideoList(userId string) []entity.VideoResponse {
 		return videoResponseList
 	}
 	return videoResponseList
+}
+
+func (u VideoServiceImpl) VideoList() []entity.VideoResponse {
+	var videos []entity.Video
+	videos = mapper.VideoListAll()
+	var videoRespons []entity.VideoResponse
+	for _, v := range videos {
+		videoRespons = append(videoRespons, entity.VideoResponse{
+			Id:            v.Id,
+			Author:        *mapper.SelectUserInfoById(strconv.Itoa(int(v.AuthorId))),
+			PlayUrl:       v.PlayUrl,
+			CoverUrl:      v.CoverUrl,
+			FavoriteCount: v.FavoriteCount,
+			CommentCount:  v.CommentCount,
+			IsFavorite:    v.IsFavorite,
+		})
+	}
+	return videoRespons
 }

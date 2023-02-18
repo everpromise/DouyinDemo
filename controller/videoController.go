@@ -53,7 +53,7 @@ func Publish(c *gin.Context) {
 func PublishList(c *gin.Context) {
 	userId := c.Query("user_id")
 	srv := services.VideoServiceImpl{}
-	videoList := srv.VideoList(userId)
+	videoList := srv.VideoListByid(userId)
 
 	c.JSON(http.StatusOK, VideoListResponse{
 		Response: Response{

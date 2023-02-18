@@ -16,6 +16,7 @@ func main() {
 	r := gin.Default()
 
 	r.StaticFS("/public/covers", http.Dir("./public/covers"))
+	r.StaticFS("/public/videos", http.Dir("./public/videos"))
 
 	initRouter(r)
 
