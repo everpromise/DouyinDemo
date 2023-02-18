@@ -1,6 +1,8 @@
 package controller
 
-var DemoVideos = []Video{
+import "github.com/RaymondCode/simple-demo/entity"
+
+var DemoVideos = []entity.VideoResponse{
 	{
 		Id:            1,
 		Author:        DemoUser,
@@ -21,7 +23,7 @@ var DemoComments = []Comment{
 	},
 }
 
-var DemoUser = User{
+var DemoUser = entity.UserInfo{
 	Id:            1,
 	Name:          "TestUser",
 	FollowCount:   0,

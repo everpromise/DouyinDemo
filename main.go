@@ -4,6 +4,7 @@ import (
 	"github.com/RaymondCode/simple-demo/mapper"
 	"github.com/RaymondCode/simple-demo/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
@@ -13,6 +14,8 @@ func main() {
 	//mapper.Test()
 
 	r := gin.Default()
+
+	r.StaticFS("/public/covers", http.Dir("./public/covers"))
 
 	initRouter(r)
 

@@ -4,10 +4,10 @@ import (
 	"github.com/RaymondCode/simple-demo/entity"
 )
 
-func InsertVideo(video *entity.Video) bool {
-	Db.Create(&video)
-	return true
-}
+//func InsertVideo(video *entity.Video) bool {
+//	Db.Create(&video)
+//	return true
+//}
 
 func SelectVideoById(id string) (entity.Video, error) {
 	video := entity.Video{}
@@ -23,4 +23,22 @@ func MakeFavoriteList() ([]entity.Video, error) {
 		return videolists, err
 	}
 	return videolists, nil
+}
+
+func InsertVideo(video *entity.Video) error {
+	Db.Create(&video)
+
+	if err := Db.Where("play_url = ?", video.PlayUrl).Find(&video).Error; err != nil {
+		Db.Create(&video)
+		return err
+	}
+	return nil
+}
+
+func VideoList(userId string) ([]entity.Video, error) {
+	var videoList []entity.Video
+	if err := Db.Where("author_id = ?", userId).Find(&videoList).Error; err != nil {
+		return videoList, err
+	}
+	return videoList, nil
 }

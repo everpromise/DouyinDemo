@@ -15,3 +15,13 @@ type UserInfo struct {
 	FollowerCount int64  `gorm:"not null" json:"follower_count,omitempty"`
 	IsFollow      bool   `gorm:"not null" json:"is_follow,omitempty"`
 }
+
+type User struct {
+	UserInfo        UserInfo `json:"user_info"`
+	avatar          string   `json:"avatar,omitempty"`
+	backgroundImage string   `json:"background_image,omitempty"`
+	signature       string   `json:"signature,omitempty"`
+	totalFaorited   string   `json:"total_faorited,omitempty"`
+	workCount       int64    `json:"work_count,omitempty"`
+	favoriteCount   int64    `json:"favorite_count,omitempty"`
+}

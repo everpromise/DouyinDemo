@@ -12,7 +12,7 @@ import (
 // usersLoginInfo use map to store user info, and key is username+password for demo
 // user data will be cleared every time the server starts
 // test data: username=zhanglei, password=douyin
-var usersLoginInfo = map[string]User{
+var usersLoginInfo = map[string]entity.UserInfo{
 	"zhangleidouyin": {
 		Id:            1,
 		Name:          "zhanglei",
@@ -65,6 +65,7 @@ func Login(c *gin.Context) {
 	password := c.Query("password")
 
 	//token := username + password
+
 	var usi services.UserService
 	usi = services.UserServiceImpl{}
 	userTemp := entity.UserRegister{Username: username, Password: password}
