@@ -17,6 +17,8 @@ func main() {
 
 	r.StaticFS("/public/covers", http.Dir("./public/covers"))
 	r.StaticFS("/public/videos", http.Dir("./public/videos"))
+	r.StaticFS("/public/avatars", http.Dir("./public/avatars"))
+	r.StaticFS("/public/background", http.Dir("./public/background"))
 
 	initRouter(r)
 

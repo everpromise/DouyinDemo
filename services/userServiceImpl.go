@@ -3,6 +3,8 @@ package services
 import (
 	"github.com/RaymondCode/simple-demo/entity"
 	"github.com/RaymondCode/simple-demo/mapper"
+	"os"
+	"strconv"
 )
 
 type UserServiceImpl struct {
@@ -14,6 +16,9 @@ func (u UserServiceImpl) RegisterUser(userRegister *entity.UserRegister) (int64,
 		mapper.InsertUser(userRegister) // 添加用户
 		userT, _ := mapper.SelectUserByName(userRegister.Username)
 		mapper.InsertUserInfo(entity.UserInfo{Id: userT.Id, Name: userRegister.Username})
+
+		// 创建 user follower 文件
+		os.Create("./userDatas/" + strconv.Itoa(int(userT.Id)))
 		return user.Id, err
 	}
 

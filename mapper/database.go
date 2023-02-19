@@ -22,5 +22,6 @@ func InitDatabase() {
 	Db.AutoMigrate(&entity.UserRegister{})
 	Db.AutoMigrate(&entity.UserInfo{})
 	Db.AutoMigrate(&entity.Video{})
+	Db.AutoMigrate(&entity.Message{})
 	//Db.AutoMigrate(&entity.VideoResponse{})
 }
