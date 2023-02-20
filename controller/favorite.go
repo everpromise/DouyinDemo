@@ -36,15 +36,15 @@ func FavoriteList(c *gin.Context) {
 	usi = services.UserServiceImpl{}
 	var vsi services.VideoService
 	vsi = services.VideoServiceImpl{}
-	//DemoVideos0 := vsi.FavorVideoList()
-	vsi.FavorVideoList()
+	DemoVideos0 := vsi.FavorVideoList()
+	//vsi.FavorVideoList()
 	userInfo := usi.UserInfo(token)
 	if userInfo != nil {
 		c.JSON(http.StatusOK, VideoListResponse{
 			Response: Response{
 				StatusCode: 0,
 			},
-			VideoList: DemoVideos,
+			VideoList: DemoVideos0,
 		})
 	}
 }

@@ -2,26 +2,27 @@ package services
 
 import (
 	"fmt"
+	"mime/multipart"
+	"path/filepath"
+	"strconv"
+	"strings"
+
 	"github.com/RaymondCode/simple-demo/config"
 	"github.com/RaymondCode/simple-demo/entity"
 	"github.com/RaymondCode/simple-demo/mapper"
 	"github.com/RaymondCode/simple-demo/utils"
 	"github.com/disintegration/imaging"
-	"mime/multipart"
-	"path/filepath"
-	"strconv"
-	"strings"
 )
 
 type VideoServiceImpl struct {
 }
 
-func (u VideoServiceImpl) FavorVideoList() *[]entity.Video {
+func (u VideoServiceImpl) FavorVideoList() []entity.VideoResponse {
 	videolist, err := mapper.MakeFavoriteList()
 	if err != nil {
-		return &videolist
+		return videolist
 	} else {
-		return &videolist
+		return videolist
 	}
 }
 

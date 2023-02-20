@@ -1,8 +1,9 @@
 package services
 
 import (
-	"github.com/RaymondCode/simple-demo/entity"
 	"mime/multipart"
+
+	"github.com/RaymondCode/simple-demo/entity"
 )
 
 /*
@@ -11,7 +12,7 @@ import (
 
 type VideoService interface {
 	//喜欢视频列表
-	FavorVideoList() *[]entity.Video
+	FavorVideoList() []entity.VideoResponse
 
 	// 视频发布
 	VideoPublish(token string, title string, desc string, file *multipart.FileHeader) (*entity.UserInfo, *entity.Video, error)

@@ -1,7 +1,5 @@
 package controller
 
-import "github.com/RaymondCode/simple-demo/entity"
-
 type Response struct {
 	StatusCode int32  `json:"status_code"`
 	StatusMsg  string `json:"status_msg,omitempty"`
@@ -17,12 +15,12 @@ type Video struct {
 	IsFavorite    bool   `json:"is_favorite,omitempty"`
 }
 
-type Comment struct {
-	Id         int64           `json:"id,omitempty"`
-	User       entity.UserInfo `json:"user"`
-	Content    string          `json:"content,omitempty"`
-	CreateDate string          `json:"create_date,omitempty"`
-}
+// type Comment struct {
+// 	Id         int64           `json:"id,omitempty"`
+// 	User       entity.UserInfo `json:"user"`
+// 	Content    string          `json:"content,omitempty"`
+// 	CreateDate string          `json:"create_date,omitempty"`
+// }
 
 type User struct {
 	Id            int64  `json:"id,omitempty"`

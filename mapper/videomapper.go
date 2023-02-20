@@ -17,8 +17,8 @@ func SelectVideoById(id string) (entity.Video, error) {
 	return video, nil
 }
 
-func MakeFavoriteList() ([]entity.Video, error) {
-	var videolists []entity.Video
+func MakeFavoriteList() ([]entity.VideoResponse, error) {
+	var videolists []entity.VideoResponse
 	if err := Db.Where("is_favorite = ?", "1").Find(&videolists).Error; err != nil {
 		return videolists, err
 	}

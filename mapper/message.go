@@ -1,8 +1,9 @@
 package mapper
 
 import (
-	"github.com/RaymondCode/simple-demo/entity"
 	"strconv"
+
+	"github.com/RaymondCode/simple-demo/entity"
 )
 
 func InsertMessage(userId string, toUserId string, content string, createTime string) {
@@ -19,6 +20,6 @@ func InsertMessage(userId string, toUserId string, content string, createTime st
 
 func SelectMessageList(userId string, toUserId string) []entity.Message {
 	var messageList []entity.Message
-	Db.Where("from_user_id=?", userId).Or("from_user_id=?", toUserId).Find(&messageList)
+	Db.Where("from_user_id=?", userId).Or("to_user_id=?", toUserId).Find(&messageList)
 	return messageList
 }

@@ -14,7 +14,7 @@ var DemoVideos = []entity.VideoResponse{
 	},
 }
 
-var DemoComments = []Comment{
+var DemoComments = []entity.Comment{
 	{
 		Id:         1,
 		User:       DemoUser,
